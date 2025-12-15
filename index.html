@@ -144,5 +144,26 @@ button:hover {
 </div>
 
 </body>
+<script>
+    const form = document.getElementById("form-box");
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault(); 
+
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const message = document.getElementById("message").value.trim();
+
+        if (name === "" || email === "") {
+            alert("Please fill in your name and email.");
+            return;
+        }
+
+        alert("Thank you, " + name + "! Your message has been sent.");
+
+        form.reset(); 
+    });
+</script>
+
 
 </html>
