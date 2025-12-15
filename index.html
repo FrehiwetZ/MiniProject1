@@ -3,30 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Personal portifolio</title>
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", sans-serif;
+    background-color: #f0f0f0; /* plain background */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+       
+    </style>
 </head>
 <body>
-    <h1>FREHIWET ZERIHUN</h1>
-    <p>
-Hello, I’m Frehiwet Zerihun, a motivated and curious student with a strong interest in technology and creativity.
-I’m currently focused on learning programming, web development, and Computative programming, and I enjoy building my skills by practicing,
-exploring new tools, and working on academic and personal projects.
-My goal is to become a skilled developer who creates meaningful, user-friendly solutions while continuously learning and
- evolving in the tech field.
-</p>
-<img src="project-pic.jpg" alt="">
+    <div class="container">
 
-<form>
-    <label >Name:</label><br>
-    <input type="text" name="name" required/>
+    <div class="profile-section">
+        <div class="text-section">
+            <h1>Frehiwet Zerihun</h1>
+            <p>
+               Hello, I’m Frehiwet Zerihun, a motivated and curious student with a strong interest in technology and creativity.
+            I’m currently focused on learning programming, web development, and Computative programming, and I enjoy building my skills by practicing,
+            exploring new tools, and working on academic and personal projects.
+            My goal is to become a skilled developer who creates meaningful, user-friendly solutions while continuously learning and
+            evolving in the tech field.
+            </p>
+        </div>
 
-    <label >Email:</label><br>
-    <input type="email" name="email" required>
+        <div class="image-section">
+            <img src="profile.jpg" alt="Profile Image">
+        </div>
+    </div>
 
-    <label >Message:</label><br>
-    <textarea name="message" rows="4"></textarea>
+    <div class="form-box">
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message"></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
 
-    <button type="submit">Submit</button>
-</form>
+</div>
+
 </body>
 </html>
