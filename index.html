@@ -1,172 +1,860 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal portifolio</title>
-    <style>
-        * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Frehiwet Zerihun | Software Engineer & Data Scientist</title>
+  <!-- Google Fonts + Font Awesome 6 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-body {
-    font-family: "Segoe UI", sans-serif;
-    background-color: #f0f0f0; 
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      transition: background 0.3s ease, color 0.2s ease;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
 
+    /* ===== THEME VARIABLES ===== */
+    :root {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8fafc;
+      --card-bg: #ffffff;
+      --text-primary: #0f172a;
+      --text-secondary: #334155;
+      --text-muted: #64748b;
+      --accent: #3b82f6;
+      --accent-dark: #2563eb;
+      --border: #e2e8f0;
+      --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+      --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.01);
+    }
 
-.container {
-    width: 95%;
-    max-width: 700px;
-    padding: 25px;
-    border-radius: 16px;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: white;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-}
+    body.dark {
+      --bg-primary: #0f172a;
+      --bg-secondary: #1e293b;
+      --card-bg: #1e293b;
+      --text-primary: #f1f5f9;
+      --text-secondary: #cbd5e1;
+      --text-muted: #94a3b8;
+      --accent: #60a5fa;
+      --accent-dark: #3b82f6;
+      --border: #334155;
+      --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+      --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    }
 
+    /* ===== GLOBAL ===== */
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-.profile-section {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    margin-bottom: 25px;
-}
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
+    section {
+      padding: 100px 0;
+    }
 
-.text-section {
-    flex: 1;
-}
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 48px;
+      position: relative;
+      display: inline-block;
+      letter-spacing: -0.02em;
+    }
 
-.text-section h1 {
-    margin-bottom: 10px;
-}
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 4px;
+    }
 
-.text-section p {
-    line-height: 1.6;
-}
+    /* ===== HEADER / NAVBAR ===== */
+    header {
+      position: sticky;
+      top: 0;
+      background: var(--bg-primary);
+      backdrop-filter: blur(0px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      transition: background 0.2s;
+    }
 
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+      flex-wrap: wrap;
+    }
 
-.image-section img {
-    width: 200px;
-    height: 200;
-    object-fit: cover;
-    border-radius: 7px;
-    border: 3px solid white;
-}
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), #8b5cf6);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.02em;
+    }
 
-.form-box {
-    background: rgba(255, 255, 255, 0.15);
-    padding: 20px;
-    border-radius: 12px;
-}
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      list-style: none;
+    }
 
-label {
-    display: block;
-    margin-bottom: 6px;
-    font-weight: bold;
-}
-input,
-textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 12px;
-    border-radius: 8px;
-    border: none;
-    font-size: 14px;
-}
+    .nav-links a {
+      font-weight: 500;
+      transition: color 0.2s;
+      color: var(--text-secondary);
+    }
 
-input:focus,
-textarea:focus {
-    outline: none;
-}
+    .nav-links a:hover {
+      color: var(--accent);
+    }
 
+    .theme-toggle {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 40px;
+      padding: 8px 14px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: all 0.2s;
+      color: var(--text-primary);
+    }
 
-button {
-    width: 50%;
-    padding: 12px;
-    background: #764ba2;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    font-weight: bold;
-    margin: 15px auto;
-    display: block;
-}
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: var(--text-primary);
+    }
 
-button:hover {
-    opacity: 0.9;
-}
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+    }
 
-       
-    </style>
+    .hero-content h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .highlight {
+      color: var(--accent);
+      border-bottom: 3px solid var(--accent);
+    }
+
+    .hero-role {
+      font-size: 1.6rem;
+      margin-bottom: 24px;
+      color: var(--text-secondary);
+    }
+
+    #typed-text {
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 3px;
+      margin-left: 4px;
+      animation: blink 0.8s infinite;
+      background: var(--accent);
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin: 32px 0 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      border-radius: 40px;
+      font-weight: 600;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+      font-size: 1rem;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--border);
+      color: var(--text-primary);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    /* ===== ABOUT ===== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .about-text p {
+      margin-bottom: 18px;
+      color: var(--text-secondary);
+    }
+
+    .skill-bars {
+      margin-top: 28px;
+    }
+
+    .skill-item {
+      margin-bottom: 16px;
+    }
+
+    .skill-name {
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .skill-bar-bg {
+      background: var(--border);
+      border-radius: 20px;
+      height: 8px;
+      overflow: hidden;
+    }
+
+    .skill-bar-fill {
+      background: var(--accent);
+      width: 0%;
+      height: 100%;
+      border-radius: 20px;
+      transition: width 1s ease;
+    }
+
+    /* ===== PROJECTS ===== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 32px;
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: all 0.25s ease;
+      border: 1px solid var(--border);
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .project-img {
+      height: 180px;
+      background: linear-gradient(135deg, var(--accent), #a855f7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: white;
+    }
+
+    .project-info {
+      padding: 24px;
+    }
+
+    .project-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .project-desc {
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      font-size: 0.95rem;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .tech-tag {
+      background: var(--bg-secondary);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--accent);
+    }
+
+    .project-links a {
+      margin-right: 16px;
+      font-weight: 500;
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
+
+    /* ===== CONTACT ===== */
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+
+    .contact-info p {
+      margin: 16px 0;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .contact-info i {
+      width: 32px;
+      color: var(--accent);
+      font-size: 1.2rem;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .contact-form input, .contact-form textarea {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      padding: 14px 18px;
+      border-radius: 20px;
+      font-family: inherit;
+      font-size: 1rem;
+      color: var(--text-primary);
+      transition: 0.2s;
+    }
+
+    .contact-form input:focus, .contact-form textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
+    }
+
+    .form-message {
+      font-size: 0.85rem;
+      margin-top: -10px;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+      text-align: center;
+      color: var(--text-muted);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      margin-bottom: 24px;
+    }
+
+    .social-links a {
+      font-size: 1.5rem;
+      transition: color 0.2s;
+      color: var(--text-muted);
+    }
+
+    .social-links a:hover {
+      color: var(--accent);
+    }
+
+    /* back to top */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--accent);
+      color: white;
+      width: 45px;
+      height: 45px;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      transition: 0.2s;
+      pointer-events: none;
+      box-shadow: var(--shadow-md);
+      z-index: 99;
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* responsive */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-wrap: nowrap;
+      }
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 80%;
+        height: calc(100vh - 70px);
+        background: var(--bg-primary);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 40px 30px;
+        transition: 0.3s ease;
+        box-shadow: var(--shadow-lg);
+        gap: 30px;
+        border-right: 1px solid var(--border);
+        z-index: 99;
+      }
+      .nav-links.active {
+        left: 0;
+      }
+      .hamburger {
+        display: block;
+      }
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+      .hero-role {
+        font-size: 1.2rem;
+      }
+      .about-grid, .contact-wrapper {
+        grid-template-columns: 1fr;
+      }
+      .section-title {
+        font-size: 1.8rem;
+      }
+      section {
+        padding: 70px 0;
+      }
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
 <body>
+
+<header>
+  <div class="container">
+    <div class="navbar">
+      <div class="logo">FZ</div>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu"><i class="fas fa-bars"></i></button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><button class="theme-toggle" id="themeToggleBtn"><i class="fas fa-moon"></i> <span>Dark</span></button></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
     <div class="container">
-
-    <div class="profile-section">
-        <div class="text-section">
-            <h1>Frehiwet Zerihun</h1>
-            <p>
-               Hello, I’m Frehiwet Zerihun, a motivated and curious student with a strong interest in technology and creativity.
-            I’m currently focused on learning programming, web development, and Computative programming, and I enjoy building my skills by practicing,
-            exploring new tools, and working on academic and personal projects.
-            My goal is to become a skilled developer who creates meaningful, user-friendly solutions while continuously learning and
-            evolving in the tech field.
-            </p>
+      <div class="hero-content fade-up">
+        <h1>Hi, I'm <span class="highlight">Frehiwet Zerihun</span></h1>
+        <div class="hero-role">
+          <span id="typed-text"></span><span class="cursor">|</span>
         </div>
-
-        <div class="image-section">
-            <img src="project-pic.JPG" alt="">
+        <p style="max-width: 600px; color: var(--text-muted); margin-bottom: 28px;">Software Engineer | Backend & Frontend | Data Scientist | UI/UX Designer — turning complex ideas into impactful digital solutions.</p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Get in touch</a>
+          <a href="#" id="resumeBtn" class="btn btn-outline"><i class="fas fa-download"></i> Resume</a>
         </div>
+      </div>
     </div>
+  </section>
 
-    <div class="form-box">
-        <form>
-            <label for="">Name:</label>
-            <input type="text" placeholder="Frehiwet Zerihun" required>
-
-            <label for="">Email:</label>
-            <input type="email" placeholder="example@gmail.com" required>
-
-            <label for="">Message:</label>
-            <textarea placeholder="Text Message..."></textarea>
-            <button type="submit">Send Message</button>
-        </form>
+  <!-- About Section -->
+  <section id="about" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text fade-up">
+          <h2 class="section-title">About Me</h2>
+          <p>I am a passionate and detail-oriented technology student with a strong interest in software development, data science, and problem-solving. I enjoy building practical projects, learning new technologies, and turning ideas into real solutions that create value. I am committed to continuous growth, teamwork, and using technology to make everyday systems smarter and more efficient.</p>
+          <div class="skill-bars" id="skillSection">
+            <div class="skill-item"><div class="skill-name">Python</div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="90"></div></div></div>
+            <div class="skill-item"><div class="skill-name">JavaScript (ES6+)</div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="88"></div></div></div>
+            <div class="skill-item"><div class="skill-name">Java</div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="80"></div></div></div>
+            <div class="skill-item"><div class="skill-name">HTML5 & CSS3</div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="92"></div></div></div>
+            <div class="skill-item"><div class="skill-name">Go (Golang)</div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="75"></div></div></div>
+            <div class="skill-item"><div class="skill-name">Next.js / React</div><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="86"></div></div></div>
+          </div>
+        </div>
+        <div class="about-card fade-up" style="background: var(--card-bg); border-radius: 32px; padding: 32px; border: 1px solid var(--border);">
+          <i class="fas fa-laptop-code" style="font-size: 2.5rem; color: var(--accent); margin-bottom: 20px; display: inline-block;"></i>
+          <h3 style="margin-bottom: 12px;">✨ Multidisciplinary Engineer</h3>
+          <p style="color: var(--text-muted);">Blending software engineering, data science, and modern design. I build full-stack applications, analyze complex data, and craft user-centric interfaces.</p>
+          <hr style="margin: 28px 0; border-color: var(--border);">
+          <div><i class="fas fa-map-marker-alt"></i> <span style="margin-left: 8px;">Addis Ababa, Ethiopia (Remote)</span></div>
+          <div style="margin-top: 12px;"><i class="fas fa-envelope"></i> <span style="margin-left: 8px;">papsye30@gmail.com</span></div>
+          <div style="margin-top: 12px;"><i class="fab fa-github"></i> <span style="margin-left: 8px;">github.com/FrehiwetZ</span></div>
+          <div style="margin-top: 12px;"><i class="fab fa-telegram"></i> <span style="margin-left: 8px;">@Papsz1</span></div>
+        </div>
+      </div>
     </div>
+  </section>
 
-</div>
+  <!-- Projects Section -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title fade-up">Featured Projects</h2>
+      <div class="projects-grid" id="projectsGrid"></div>
+    </div>
+  </section>
 
-</body>
+  <!-- Contact Section -->
+  <section id="contact" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="contact-wrapper">
+        <div class="contact-info fade-up">
+          <h2 class="section-title">Let's Connect</h2>
+          <p><i class="fas fa-envelope"></i> papsye30@gmail.com</p>
+          <p><i class="fab fa-github"></i> <a href="https://github.com/FrehiwetZ" target="_blank" style="color: var(--accent);">github.com/FrehiwetZ</a></p>
+          <p><i class="fab fa-telegram"></i> <a href="https://t.me/Papsz1" target="_blank" style="color: var(--accent);">@Papsz1 (Telegram)</a></p>
+          <p><i class="fas fa-code-branch"></i> Open for collaborations & freelance</p>
+          <div style="margin-top: 32px;">
+            <h4>⚡ Let's build something great</h4>
+            <p style="margin-top: 8px;">Whether it's a full-stack web app, data analysis, or a creative UI — feel free to reach out. I respond within 24 hours.</p>
+          </div>
+        </div>
+        <div class="fade-up">
+          <form class="contact-form" id="contactForm">
+            <input type="text" id="nameInput" placeholder="Your Name" required>
+            <input type="email" id="emailInput" placeholder="Email Address" required>
+            <textarea rows="5" id="msgInput" placeholder="Tell me about your project or idea..."></textarea>
+            <button type="submit" class="btn btn-primary" style="width: fit-content;"><i class="fas fa-paper-plane"></i> Send Message</button>
+            <div class="form-message" id="formFeedback"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="social-links">
+      <a href="https://github.com/FrehiwetZ" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://t.me/Papsz1" target="_blank" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+      <a href="#" target="_blank" aria-label="LinkedIn (coming soon)"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+    </div>
+    <p>© <span id="currentYear"></span> Frehiwet Zerihun — Code. Create. Innovate.</p>
+  </div>
+</footer>
+
+<div class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></div>
+
 <script>
-    const form = document.getElementById("form-box");
-
-    form.addEventListener("submit", function (event) {
-        event.preventDefault(); 
-
-        const name = document.getElementById("name").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const message = document.getElementById("message").value.trim();
-
-        if (name === "" || email === "") {
-            alert("Please fill in your name and email.");
-            return;
+  (function() {
+    // ----- TYPING MULTIPLE ROLES -----
+    const roles = ["Software Engineer", "Frontend Developer", "BackEnd Developer", "Data Scientist", "UI/UX Designer"];
+    let roleIndex = 0, charIndex = 0, isDeleting = false;
+    const typedSpan = document.getElementById('typed-text');
+    function typeEffect() {
+      const currentRole = roles[roleIndex];
+      if (isDeleting) {
+        typedSpan.textContent = currentRole.substring(0, charIndex - 1);
+        charIndex--;
+        if (charIndex === 0) {
+          isDeleting = false;
+          roleIndex = (roleIndex + 1) % roles.length;
         }
+      } else {
+        typedSpan.textContent = currentRole.substring(0, charIndex + 1);
+        charIndex++;
+        if (charIndex === currentRole.length) {
+          isDeleting = true;
+          setTimeout(typeEffect, 1500);
+          return;
+        }
+      }
+      setTimeout(typeEffect, isDeleting ? 70 : 120);
+    }
+    typeEffect();
 
-        alert("Thank you, " + name + "! Your message has been sent.");
-
-        form.reset(); 
+    // ----- THEME TOGGLE (DARK/LIGHT) -----
+    const themeBtn = document.getElementById('themeToggleBtn');
+    const body = document.body;
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      body.classList.add('dark');
+      updateThemeIcon(true);
+    } else {
+      updateThemeIcon(false);
+    }
+    function updateThemeIcon(isDark) {
+      if (themeBtn) {
+        if (isDark) themeBtn.innerHTML = '<i class="fas fa-sun"></i> <span>Light</span>';
+        else themeBtn.innerHTML = '<i class="fas fa-moon"></i> <span>Dark</span>';
+      }
+    }
+    themeBtn.addEventListener('click', () => {
+      body.classList.toggle('dark');
+      const isDarkNow = body.classList.contains('dark');
+      localStorage.setItem('theme', isDarkNow ? 'dark' : 'light');
+      updateThemeIcon(isDarkNow);
     });
+
+    // ----- MOBILE HAMBURGER MENU -----
+    const hamburger = document.getElementById('hamburgerBtn');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('active'));
+    });
+
+    // ----- PROJECTS DATA (User Provided Repos) -----
+    const projectsData = [
+      {
+        title: "Hotel Reservation System",
+        desc: "Full-featured hotel management platform with room booking, payment integration, and admin dashboard.",
+        tech: ["Java", "Spring Boot", "MySQL", "React"],
+        icon: "🏨",
+        repo: "https://github.com/Joelorbit/Hotel-Reservation-System.git"
+      },
+      {
+        title: "Tic-Tac-Toe Game",
+        desc: "Classic Tic-Tac-Toe with interactive UI, player vs player mode and AI opponent.",
+        tech: ["JavaScript", "HTML5", "CSS3"],
+        icon: "🎮",
+        repo: "https://github.com/FrehiwetZ/Datascience-Bootcamp-Projects/tree/main/Tic-Tac-Toe%20game"
+      },
+      {
+        title: "Titanic Pandas Analysis",
+        desc: "Exploratory data analysis & visualization on Titanic dataset using Pandas, Matplotlib. Insights on survival factors.",
+        tech: ["Python", "Pandas", "Matplotlib", "Seaborn"],
+        icon: "🚢",
+        repo: "https://github.com/FrehiwetZ/Datascience-Bootcamp-Projects/tree/main/Titanic_Pandas_analysis"
+      },
+      {
+        title: "Statistical Engine",
+        desc: "Statistical hypothesis testing and descriptive analytics engine with real-time computations.",
+        tech: ["Python", "NumPy", "SciPy", "Statsmodels"],
+        icon: "📈",
+        repo: "https://github.com/FrehiwetZ/Datascience-Bootcamp-Projects/tree/main/Statistical%20Thinking/statistical_engine"
+      },
+      {
+        title: "Reverse String Algorithm",
+        desc: "Simple yet elegant string reversal tool demonstrating recursion and iteration methods.",
+        tech: ["Python", "Algorithms"],
+        icon: "🔄",
+        repo: "https://github.com/FrehiwetZ/Datascience-Bootcamp-Projects/tree/main/Reverse%20String"
+      },
+      {
+        title: "Fibonacci Sequence",
+        desc: "Generate Fibonacci series using dynamic programming and recursion. Visual output.",
+        tech: ["Python", "Mathematics", "Optimization"],
+        icon: "🌀",
+        repo: "https://github.com/FrehiwetZ/Datascience-Bootcamp-Projects/tree/main/Fibonacci%20sequence"
+      }
+    ];
+
+    const projectsGrid = document.getElementById('projectsGrid');
+    function renderProjects() {
+      projectsGrid.innerHTML = '';
+      projectsData.forEach(proj => {
+        const card = document.createElement('div');
+        card.classList.add('project-card', 'fade-up');
+        card.innerHTML = `
+          <div class="project-img">${proj.icon}</div>
+          <div class="project-info">
+            <h3 class="project-title">${proj.title}</h3>
+            <p class="project-desc">${proj.desc}</p>
+            <div class="project-tech">${proj.tech.map(t => `<span class="tech-tag">${t}</span>`).join('')}</div>
+            <div class="project-links">
+              <a href="${proj.repo}" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+              <a href="${proj.repo}" target="_blank"><i class="fas fa-external-link-alt"></i> Explore</a>
+            </div>
+          </div>
+        `;
+        projectsGrid.appendChild(card);
+      });
+    }
+    renderProjects();
+
+    // ----- SKILL BARS & SCROLL ANIMATIONS (Intersection Observer)-----
+    const fadeElements = document.querySelectorAll('.fade-up');
+    const skillFillBars = document.querySelectorAll('.skill-bar-fill');
+    function animateSkillBars() {
+      skillFillBars.forEach(bar => {
+        const widthVal = bar.getAttribute('data-width');
+        if (widthVal && !bar.style.width) {
+          bar.style.width = widthVal + '%';
+        }
+      });
+    }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          if (entry.target.querySelectorAll) {
+            const innerBars = entry.target.querySelectorAll('.skill-bar-fill');
+            if (innerBars.length) {
+              innerBars.forEach(bar => { if(bar.getAttribute('data-width')) bar.style.width = bar.getAttribute('data-width') + '%'; });
+            }
+          }
+        }
+      });
+    }, { threshold: 0.1 });
+    fadeElements.forEach(el => observer.observe(el));
+    // specifically trigger skill bars if about section appears
+    const aboutSection = document.getElementById('about');
+    const aboutObserver = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) animateSkillBars();
+    }, { threshold: 0.3 });
+    if (aboutSection) aboutObserver.observe(aboutSection);
+
+    // ----- SMOOTH SCROLL & ACTIVE LINK HIGHLIGHT -----
+    const sections = document.querySelectorAll('section');
+    const navItems = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+      navItems.forEach(link => {
+        link.style.color = '';
+        if (link.getAttribute('href') === `#${current}`) link.style.color = 'var(--accent)';
+      });
+      const backBtn = document.getElementById('backToTop');
+      if (window.scrollY > 500) backBtn.classList.add('show');
+      else backBtn.classList.remove('show');
+    });
+
+    // Back to top button
+    const backTop = document.getElementById('backToTop');
+    backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Resume button simulation (customizable)
+    const resumeBtn = document.getElementById('resumeBtn');
+    resumeBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      alert("📄 Frehiwet Zerihun's resume — you can replace this with your actual PDF link.");
+    });
+
+    // ----- CONTACT FORM INTERACTION (Validation + Demo)-----
+    const contactForm = document.getElementById('contactForm');
+    const formFeedback = document.getElementById('formFeedback');
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('nameInput').value.trim();
+      const email = document.getElementById('emailInput').value.trim();
+      const message = document.getElementById('msgInput').value.trim();
+      if (!name || !email || !message) {
+        formFeedback.innerHTML = '❌ All fields are required.';
+        formFeedback.style.color = '#ef4444';
+        setTimeout(() => { formFeedback.innerHTML = ''; }, 2800);
+        return;
+      }
+      if (!email.includes('@') || !email.includes('.')) {
+        formFeedback.innerHTML = '❌ Please enter a valid email address.';
+        formFeedback.style.color = '#ef4444';
+        setTimeout(() => { formFeedback.innerHTML = ''; }, 2800);
+        return;
+      }
+      formFeedback.innerHTML = '✅ Thanks! Your message has been sent. I will get back to you soon.';
+      formFeedback.style.color = '#10b981';
+      contactForm.reset();
+      setTimeout(() => { formFeedback.innerHTML = ''; }, 4000);
+    });
+
+    // Footer dynamic year
+    document.getElementById('currentYear').innerText = new Date().getFullYear();
+
+    // initial visible check for skill bars
+    setTimeout(() => {
+      fadeElements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) el.classList.add('visible');
+      });
+      if (aboutSection && aboutSection.getBoundingClientRect().top < window.innerHeight) animateSkillBars();
+    }, 200);
+  })();
 </script>
-
-
+</body>
 </html>
